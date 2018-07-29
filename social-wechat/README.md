@@ -100,5 +100,3 @@ public class HelloworldApp {
     	SpringApplication.run(HelloworldApp.class, args);
     }
 }
-
-
