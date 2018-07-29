@@ -1,16 +1,18 @@
-spring-social-wechat
+<h1>spring-social-wechat</h1>
+<blockquote>
+<p>The Spring Social Wechat project is an extension to Spring Social that enables integration with Wechat.</p>
+</blockquote>
 
-The Spring Social Wechat project is an extension to Spring Social that enables integration with Wechat.
-
-=========================================================================================================
-1. Introduction
+<h2>1. Introduction</h2>
+<blockquote>
 With over 10.4 billion users (and growing), Wechat is the largest online social network. While bringing together friends and family, Wechat also offers a rich platform on which to develop applications.
 
 Spring Social Wechat enables integration with Wechat with WechatConnectionFactory, a connection factory that can be plugged into Spring Social’s service provider connection framework, and with an API binding to Wechat’s REST API.
+</blockquote>
 
-=========================================================================================================
-2. Maven sample
+<h2>2. Maven sample</h2>
 
+```xml
 <repositories>
     <repository>
         <id>social-wechat-master</id>
@@ -29,11 +31,11 @@ Spring Social Wechat enables integration with Wechat with WechatConnectionFactor
     <artifactId>social-wechat</artifactId>
     <version>0.0.1</version>
 </dependency>
+```
 
-=========================================================================================================
-3. Java configuration
+<h2>3. Java configuration</h2>
 
-
+```
 import org.hua.social.wechat.connect.WechatConnectionFactory;
 import org.hua.social.wechat.entry.WechatUserIdSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -67,10 +69,10 @@ public class SocialConfig implements SocialConfigurer {
 		return null;
 	}
 }
+```
 
-=========================================================================================================
-4. Use case
-
+<h2>4. Use case</h2>
+```
 import org.hua.social.wechat.api.Wechat;
 import org.hua.social.wechat.api.impl.WechatTemplate;
 import org.hua.social.wechat.entry.User;
@@ -100,3 +102,4 @@ public class HelloworldApp {
     	SpringApplication.run(HelloworldApp.class, args);
     }
 }
+```
