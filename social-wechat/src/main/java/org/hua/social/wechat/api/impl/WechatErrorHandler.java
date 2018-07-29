@@ -12,6 +12,10 @@ import org.springframework.social.ServerException;
 import org.springframework.social.UncategorizedApiException;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 
+/**
+ * @author huacailiang
+ *
+ */
 public class WechatErrorHandler extends DefaultResponseErrorHandler {
 	
 	private static final String WECHAT_PROVIDER_ID = "wechat";

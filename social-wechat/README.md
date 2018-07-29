@@ -10,7 +10,7 @@ With over 10.4 billion users (and growing), Wechat is the largest online social 
 Spring Social Wechat enables integration with Wechat with WechatConnectionFactory, a connection factory that can be plugged into Spring Social’s service provider connection framework, and with an API binding to Wechat’s REST API.
 </blockquote>
 
-<h2>2. Maven sample</h2>
+<h2>2. Maven </h2>
 
 ```xml
 <repositories>
@@ -71,7 +71,8 @@ public class SocialConfig implements SocialConfigurer {
 }
 ```
 
-<h2>4. Use case</h2>
+<h2>4. Retrieving a user’s profile data</h2>
+
 ```
 import org.hua.social.wechat.api.Wechat;
 import org.hua.social.wechat.api.impl.WechatTemplate;

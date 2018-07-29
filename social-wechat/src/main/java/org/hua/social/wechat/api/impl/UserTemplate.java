@@ -4,6 +4,11 @@ import org.hua.social.wechat.api.UserOperations;
 import org.hua.social.wechat.entry.User;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * Retrieving user profile restTemplate
+ * @author huacailiang
+ *
+ */
 public class UserTemplate implements UserOperations {
 	
 	private final RestTemplate restTemplate;
