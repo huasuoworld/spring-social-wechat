@@ -72,6 +72,7 @@ public class SocialConfig implements SocialConfigurer {
 ```
 
 <h2>4. Retrieving a user’s profile data</h2>
+
 ```
 import org.hua.social.wechat.api.Wechat;
 import org.hua.social.wechat.api.impl.WechatTemplate;
