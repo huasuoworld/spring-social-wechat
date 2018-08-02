@@ -2,6 +2,7 @@ package org.hua.social.wechat.api.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hua.social.wechat.api.TagsOperations;
 import org.hua.social.wechat.api.UserOperations;
 import org.hua.social.wechat.api.Wechat;
 import org.hua.social.wechat.api.impl.json.WechatModule;
@@ -26,6 +27,8 @@ public class WechatTemplate extends AbstractOAuth2ApiBinding implements Wechat {
 	private String applicationNamespace;
 	
 	private UserOperations userOperations;
+	
+	private TagsOperations tagsOperations;
 	
 	
 	/**
@@ -84,6 +87,7 @@ public class WechatTemplate extends AbstractOAuth2ApiBinding implements Wechat {
 	private void initSubApis() {
 		log.info("start initSubApis..............");
 		userOperations = new UserTemplate(getRestTemplate());
+		tagsOperations = new TagsTemplate(getRestTemplate());
 		log.info("end initSubApis..............");
 	}
 
@@ -121,5 +125,9 @@ public class WechatTemplate extends AbstractOAuth2ApiBinding implements Wechat {
 
 	public UserOperations userOperations() {
 		return userOperations;
+	}
+
+	public TagsOperations tagsOperations() {
+		return tagsOperations;
 	}
 }
