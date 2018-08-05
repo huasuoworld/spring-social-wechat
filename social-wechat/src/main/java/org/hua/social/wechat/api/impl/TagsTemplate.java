@@ -49,7 +49,7 @@ public class TagsTemplate implements TagsOperations {
 
 	public void update(Tags tags) {
 		try {
-			HttpEntity<String> request = new HttpEntity<String>(Constant.objectMapper.writeValueAsString(tags), HttpTool.requestHeaders());
+			HttpEntity<String> request = new HttpEntity<String>(Constant.objectMapper.writeValueAsString(tags), HttpTool.applicationJson());
 			String src = restTemplate.postForObject(UPDATE, request, String.class);
 			log.debug(src);
 		} catch (Exception e) {
@@ -59,7 +59,7 @@ public class TagsTemplate implements TagsOperations {
 
 	public void delete(Tags tags) {
 		try {
-			HttpEntity<String> request = new HttpEntity<String>(Constant.objectMapper.writeValueAsString(tags), HttpTool.requestHeaders());
+			HttpEntity<String> request = new HttpEntity<String>(Constant.objectMapper.writeValueAsString(tags), HttpTool.applicationJson());
 			String src = restTemplate.postForObject(DELETE, request, String.class);
 			log.debug(src);
 		} catch (Exception e) {
@@ -69,7 +69,7 @@ public class TagsTemplate implements TagsOperations {
 
 	public void create(Tags tags) {
 		try {
-			HttpEntity<String> request = new HttpEntity<String>(Constant.objectMapper.writeValueAsString(tags), HttpTool.requestHeaders());
+			HttpEntity<String> request = new HttpEntity<String>(Constant.objectMapper.writeValueAsString(tags), HttpTool.applicationJson());
 			String src = restTemplate.postForObject(CREATE, request, String.class);
 			log.debug(src);
 		} catch (Exception e) {
@@ -99,7 +99,7 @@ public class TagsTemplate implements TagsOperations {
 					param.put("next_openid", next_openid);
 				}
 				
-				HttpEntity<String> request = new HttpEntity<String>(param.toString(), HttpTool.requestHeaders());
+				HttpEntity<String> request = new HttpEntity<String>(param.toString(), HttpTool.applicationJson());
 				String response = restTemplate.postForObject(TAG_USERS, request, String.class);
 				JSONObject responseObject = new JSONObject(response);
 				
@@ -141,7 +141,7 @@ public class TagsTemplate implements TagsOperations {
 
 	public void batchtagging(BatchGagging batchtagging) {
 		try {
-			HttpEntity<String> request = new HttpEntity<String>(Constant.objectMapper.writeValueAsString(batchtagging), HttpTool.requestHeaders());
+			HttpEntity<String> request = new HttpEntity<String>(Constant.objectMapper.writeValueAsString(batchtagging), HttpTool.applicationJson());
 			String src = restTemplate.postForObject(BATCH_TAGGING, request, String.class);
 			log.debug(src);
 		} catch (Exception e) {
@@ -151,7 +151,7 @@ public class TagsTemplate implements TagsOperations {
 	
 	public void batchuntagging(BatchGagging batchtagging) {
 		try {
-			HttpEntity<String> request = new HttpEntity<String>(Constant.objectMapper.writeValueAsString(batchtagging), HttpTool.requestHeaders());
+			HttpEntity<String> request = new HttpEntity<String>(Constant.objectMapper.writeValueAsString(batchtagging), HttpTool.applicationJson());
 			String src = restTemplate.postForObject(BATCH_UN_TAGGING, request, String.class);
 			log.debug(src);
 		} catch (Exception e) {
@@ -163,7 +163,7 @@ public class TagsTemplate implements TagsOperations {
 		try {
 			JSONObject json = new JSONObject();
 			json.put("openid", openid);
-			HttpEntity<String> request = new HttpEntity<String>(json.toString(), HttpTool.requestHeaders());
+			HttpEntity<String> request = new HttpEntity<String>(json.toString(), HttpTool.applicationJson());
 			String src = restTemplate.postForObject(BATCH_UN_TAGGING, request, String.class);
 			log.debug(src);
 			JSONObject response = new JSONObject(src);

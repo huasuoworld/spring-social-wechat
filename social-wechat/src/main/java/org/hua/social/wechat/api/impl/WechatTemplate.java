@@ -2,6 +2,7 @@ package org.hua.social.wechat.api.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hua.social.wechat.api.MediaOperations;
 import org.hua.social.wechat.api.TagsOperations;
 import org.hua.social.wechat.api.UserOperations;
 import org.hua.social.wechat.api.Wechat;
@@ -30,6 +31,8 @@ public class WechatTemplate extends AbstractOAuth2ApiBinding implements Wechat {
 	
 	private TagsOperations tagsOperations;
 	
+	private MediaOperations mediaOperations;
+	
 	
 	/**
 	 * Create a new instance of WechatTemplate.
@@ -48,7 +51,7 @@ public class WechatTemplate extends AbstractOAuth2ApiBinding implements Wechat {
 		super(accessToken, TokenStrategy.ACCESS_TOKEN_PARAMETER);
 		this.applicationNamespace = applicationNamespace;
 		this.appId = appId;
-		initialize();
+		initialize(accessToken);
 	}
 	
 	@Override
@@ -78,16 +81,17 @@ public class WechatTemplate extends AbstractOAuth2ApiBinding implements Wechat {
 	}
 	
 	// private helpers
-	private void initialize() {
+	private void initialize(String accessToken) {
 		// Wrap the request factory with a BufferingClientHttpRequestFactory so that the error handler can do repeat reads on the response.getBody()
 		super.setRequestFactory(ClientHttpRequestFactorySelector.bufferRequests(getRestTemplate().getRequestFactory()));
-		initSubApis();
+		initSubApis(accessToken);
 	}
 	
-	private void initSubApis() {
+	private void initSubApis(String accessToken) {
 		log.info("start initSubApis..............");
 		userOperations = new UserTemplate(getRestTemplate());
 		tagsOperations = new TagsTemplate(getRestTemplate());
+		mediaOperations = new MediaTemplate(accessToken);
 		log.info("end initSubApis..............");
 	}
 
@@ -129,5 +133,8 @@ public class WechatTemplate extends AbstractOAuth2ApiBinding implements Wechat {
 
 	public TagsOperations tagsOperations() {
 		return tagsOperations;
+	}
+	public MediaOperations mediaOperations() {
+		return mediaOperations;
 	}
 }
