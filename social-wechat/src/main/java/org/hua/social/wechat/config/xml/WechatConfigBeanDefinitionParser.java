@@ -4,11 +4,10 @@ import java.util.Map;
 
 import org.hua.social.wechat.config.support.WechatApiHelper;
 import org.hua.social.wechat.connect.WechatConnectionFactory;
+import org.hua.social.wechat.security.SocialAuthenticationService;
 import org.hua.social.wechat.security.WechatAuthenticationService;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
-import org.springframework.social.config.xml.AbstractProviderConfigBeanDefinitionParser;
-import org.springframework.social.security.provider.SocialAuthenticationService;
 
 public class WechatConfigBeanDefinitionParser extends AbstractProviderConfigBeanDefinitionParser {
 

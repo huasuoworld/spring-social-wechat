@@ -1,7 +1,6 @@
 package org.hua.social.wechat.connect;
 
 import org.hua.social.wechat.api.Wechat;
-import org.springframework.social.connect.support.OAuth2ConnectionFactory;
 
 public class WechatConnectionFactory extends OAuth2ConnectionFactory<Wechat> {
 
