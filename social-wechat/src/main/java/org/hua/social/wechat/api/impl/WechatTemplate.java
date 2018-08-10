@@ -7,9 +7,10 @@ import org.hua.social.wechat.api.TagsOperations;
 import org.hua.social.wechat.api.UserOperations;
 import org.hua.social.wechat.api.Wechat;
 import org.hua.social.wechat.api.impl.json.WechatModule;
+import org.hua.social.wechat.entry.AccessToken;
+import org.hua.social.wechat.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.social.oauth2.OAuth2Version;
 import org.springframework.social.oauth2.TokenStrategy;
 import org.springframework.social.support.ClientHttpRequestFactorySelector;
@@ -39,15 +40,15 @@ public class WechatTemplate extends AbstractOAuth2ApiBinding implements Wechat {
 	 * This constructor creates the WechatTemplate using a given access token.
 	 * @param accessToken An access token given by Wechat after a successful OAuth 2 authentication (or through Wechat JS library).
 	 */
-	public WechatTemplate(String accessToken) {
+	public WechatTemplate(AccessToken accessToken) {
 		this(accessToken, null);
 	}
 
-	public WechatTemplate(String accessToken, String applicationNamespace) {
+	public WechatTemplate(AccessToken accessToken, String applicationNamespace) {
 		this(accessToken, applicationNamespace, null);
 	}
 	
-	public WechatTemplate(String accessToken, String applicationNamespace, String appId) {
+	public WechatTemplate(AccessToken accessToken, String applicationNamespace, String appId) {
 		super(accessToken, TokenStrategy.ACCESS_TOKEN_PARAMETER);
 		this.applicationNamespace = applicationNamespace;
 		this.appId = appId;
@@ -81,13 +82,13 @@ public class WechatTemplate extends AbstractOAuth2ApiBinding implements Wechat {
 	}
 	
 	// private helpers
-	private void initialize(String accessToken) {
+	private void initialize(AccessToken accessToken) {
 		// Wrap the request factory with a BufferingClientHttpRequestFactory so that the error handler can do repeat reads on the response.getBody()
 		super.setRequestFactory(ClientHttpRequestFactorySelector.bufferRequests(getRestTemplate().getRequestFactory()));
 		initSubApis(accessToken);
 	}
 	
-	private void initSubApis(String accessToken) {
+	private void initSubApis(AccessToken accessToken) {
 		log.info("start initSubApis..............");
 		userOperations = new UserTemplate(getRestTemplate());
 		tagsOperations = new TagsTemplate(getRestTemplate());

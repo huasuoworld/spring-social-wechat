@@ -83,6 +83,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.hua.social.wechat.common.AccessTokenTool;
 
 @RestController
 @SpringBootApplication
@@ -93,7 +94,7 @@ public class HelloworldApp {
     public String index() {
     	log.info("helloworld!");
     	// access token received from Wechat after OAuth authorization
-    	String accessToken = "xxx"; 
+    	AccessToken accessToken = new AccessTokenTool();
     	Wechat wechat = new WechatTemplate(accessToken);
     	User user = wechat.userOperations().getUserProfileByOpenid("xxx");
         return user.toString();

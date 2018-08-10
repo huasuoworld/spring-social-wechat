@@ -3,7 +3,8 @@ package org.hua.social.wechat.connect;
 import org.hua.social.wechat.api.Wechat;
 import org.hua.social.wechat.api.impl.WechatOAuth2Template;
 import org.hua.social.wechat.api.impl.WechatTemplate;
-import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
+import org.hua.social.wechat.entry.AccessToken;
+import org.hua.social.wechat.oauth2.AbstractOAuth2ServiceProvider;
 import org.springframework.util.StringUtils;
 
 public class WechatServiceProvider extends AbstractOAuth2ServiceProvider<Wechat> {
@@ -34,7 +35,7 @@ public class WechatServiceProvider extends AbstractOAuth2ServiceProvider<Wechat>
 	}
 
 	@Override
-	public Wechat getApi(String accessToken) {
+	public Wechat getApi(AccessToken accessToken) {
 		return new WechatTemplate(accessToken, appNamespace);
 	}
 

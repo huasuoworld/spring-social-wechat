@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hua.social.wechat.api.MediaOperations;
 import org.hua.social.wechat.common.HttpClientTool;
+import org.hua.social.wechat.entry.AccessToken;
 import org.json.JSONObject;
 
 public class MediaTemplate implements MediaOperations {
@@ -16,15 +17,15 @@ public class MediaTemplate implements MediaOperations {
 	public static final String UPLOAD_VOICE = "https://api.weixin.qq.com/cgi-bin/media/upload?type=voic&access_token=%s";
 	public static final String UPLOAD_VIDEO = "https://api.weixin.qq.com/cgi-bin/media/upload?type=video&access_token=%s";
 	public static final String UPLOAD_THUMB = "https://api.weixin.qq.com/cgi-bin/media/upload?type=thumb&access_token=%s";
-	private String access_token;
+	private AccessToken accessToken;
 	
-	public MediaTemplate(String access_token) {
-		this.access_token = access_token;
+	public MediaTemplate(AccessToken accessToken) {
+		this.accessToken = accessToken;
 	}
 
 	public String uploadImage(File file) {
 		try {
-			String url = String.format(UPLOAD_IMAGE, access_token);
+			String url = String.format(UPLOAD_IMAGE, accessToken.get());
 			String src = HttpClientTool.upload(file, url);
 			JSONObject json = new JSONObject(src);
 			log.debug(src);
@@ -37,7 +38,7 @@ public class MediaTemplate implements MediaOperations {
 
 	public String uploadVoice(File file) {
 		try {
-			String url = String.format(UPLOAD_VOICE, access_token);
+			String url = String.format(UPLOAD_VOICE, accessToken);
 			String src = HttpClientTool.upload(file, url);
 			JSONObject json = new JSONObject(src);
 			log.debug(src);
@@ -50,7 +51,7 @@ public class MediaTemplate implements MediaOperations {
 
 	public String uploadVideo(File file) {
 		try {
-			String url = String.format(UPLOAD_VIDEO, access_token);
+			String url = String.format(UPLOAD_VIDEO, accessToken);
 			String src = HttpClientTool.upload(file, url);
 			JSONObject json = new JSONObject(src);
 			log.debug(src);
@@ -63,7 +64,7 @@ public class MediaTemplate implements MediaOperations {
 
 	public String uploadThumb(File file) {
 		try {
-			String url = String.format(UPLOAD_THUMB, access_token);
+			String url = String.format(UPLOAD_THUMB, accessToken);
 			String src = HttpClientTool.upload(file, url);
 			JSONObject json = new JSONObject(src);
 			log.debug(src);
